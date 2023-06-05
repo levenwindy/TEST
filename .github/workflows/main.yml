@@ -40,5 +40,7 @@ jobs:
        run: |
          LANG=C sed -i ':label;N;s/^[\x81-\xFE][\x40-\xFE].*\n//g' 1.txt
          cat 2.txt
+         LANG=C sed -i ":label;N;s/^[\x81-\xFE][\x40-\xFE].*\n//g" 1.txt
+         cat 2.txt
          
          
