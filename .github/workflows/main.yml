@@ -1,0 +1,43 @@
+name: test
+env:
+  TZ: Asia/Shanghai
+on:
+  push:
+    paths: 
+      - '.github/workflows/main.yml'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout
+       uses: actions/checkout@main
+     
+     - name: creat1
+       run: |
+         tee << EOF > 1.txt
+         你好V2EX
+         V2EX
+         ....
+         asd14￥……#￥…… 
+         EOF
+         
+     - name: sed1
+       run: |
+         LANG=C sed -i ":label;N;s/^[\x81-\xFE][\x40-\xFE].*\n//g" 1.txt
+         cat 1.txt
+     
+     - name: creat2
+       run: |
+         tee << EOF > 2.txt
+         你好V2EX
+         V2EX
+         ....
+         asd14￥……#￥…… 
+         EOF
+         
+     - name: sed2
+       run: |
+         LANG=C sed -i ':label;N;s/^[\x81-\xFE][\x40-\xFE].*\n//g' 1.txt
+         cat 2.txt
+         
+         
